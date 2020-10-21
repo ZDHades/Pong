@@ -5,8 +5,8 @@ Class = require 'class'
 require 'Paddle'
 require 'Ball'
 
-WINDOW_HEIGHT = 720
 WINDOW_WIDTH = 1280
+WINDOW_HEIGHT = 720
 
 VIRTUAL_WIDTH = 432
 VIRTUAL_HEIGHT = 243
@@ -17,16 +17,16 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('Pong')
     math.randomseed(os.time())
-    smallFont = love.graphics.newFont('font.tff', 8)
-    largeFont = love.graphics.newFont('font.tff', 16)
-    scoreFont = love.graphics.newFont('font.tff', 32)
+    smallFont = love.graphics.newFont('font.ttf', 8)
+    largeFont = love.graphics.newFont('font.ttf', 16)
+    scoreFont = love.graphics.newFont('font.ttf', 32)
     love.graphics.setFont(smallFont)
     sounds = {
         ['paddle_hit'] = love.audio.newSource('sounds/paddle_hit.wav', 'static'),
-        ['score'] = love.audio.newSource('sounsd/score.wav', 'static'),
-        ['wall_hit'] = love.audio.nweSource('sounds/wall_hit.wav', 'static')
+        ['score'] = love.audio.newSource('sounds/score.wav', 'static'),
+        ['wall_hit'] = love.audio.newSource('sounds/wall_hit.wav', 'static')
     }
-    love.window.setMode(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         resizable = true,
         vsync = true,
@@ -99,7 +99,7 @@ function love.update(dt)
             sounds['wall_hit']:play()
         end
 
-        if ball.y >- VIRTUAL_HEIGHT - 4 then
+        if ball.y >= VIRTUAL_HEIGHT - 4 then
             ball.y = VIRTUAL_HEIGHT - 4
             ball.dy = -ball.dy
             sounds['wall_hit']:play()
