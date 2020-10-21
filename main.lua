@@ -111,6 +111,7 @@ function love.update(dt)
             sounds['score']:play()
 
             if player2Score == 10 then
+                sounds['win']:play()
                 winningPlayer = 2
                 gameState = 'done'
             else
@@ -118,13 +119,14 @@ function love.update(dt)
                 ball:reset()
             end
         end
-
+        
         if ball.x > VIRTUAL_WIDTH then
             servingPlayer = 2
             player1Score = player1Score +1
             sounds['score']:play()
-
+            
             if player1Score == 10 then
+                sounds['win']:play()
                 winningPlayer = 1
                 gameState = 'done'
             else
